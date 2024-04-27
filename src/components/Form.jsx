@@ -1,7 +1,23 @@
+import { useState } from 'react'
 import IconArrow from '../assets/icon-arrow.svg?react'
 import './Form.css'
 
+const EMPTY = {
+  day: '',
+  month: '',
+  year: '',
+}
+
 const Form = () => {
+  const [data, setData] = useState(EMPTY)
+
+  const onChange = (evt) => {
+    setData(data => ({
+      ...data,
+      [evt.target.name]: evt.target.value,
+    }))
+  }
+
   const onSubmit = (evt) => {
     evt.preventDefault()
   }
@@ -19,8 +35,11 @@ const Form = () => {
             placeholder="DD"
             size={4}
             maxLength={2}
+            value={data.day}
+            onChange={onChange}
           />
         </div>
+
         <div className="field">
           <label htmlFor="month">Month</label>
           <input
@@ -31,8 +50,11 @@ const Form = () => {
             placeholder="MM"
             size={4}
             maxLength={2}
+            value={data.month}
+            onChange={onChange}
           />
         </div>
+
         <div className="field">
           <label htmlFor="year">Year</label>
           <input
@@ -43,11 +65,13 @@ const Form = () => {
             placeholder="YYYY"
             size={4}
             maxLength={4}
+            value={data.year}
+            onChange={onChange}
           />
         </div>
       </fieldset>
 
-      <button type="submit">
+      <button type="submit" aria-label="Submit">
         <IconArrow />
       </button>
     </form>
