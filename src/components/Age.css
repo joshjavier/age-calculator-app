@@ -1,0 +1,12 @@
+.age-result {
+  font-weight: 800;
+  font-style: italic;
+  font-size: 104px;
+  letter-spacing: -2px;
+  line-height: 1.15;
+  margin-block: 26px 0;
+}
+
+.age-result span {
+  color: var(--color-primary);
+}

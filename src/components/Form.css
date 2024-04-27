@@ -1,0 +1,66 @@
+.age-form {
+  position: relative;
+}
+
+.age-form fieldset {
+  display: flex;
+  gap: 32px;
+  padding: 0;
+  padding-bottom: 47px;
+  border: 0;
+  border-bottom: 2px solid var(--color-light-200);
+}
+
+.age-form .field {
+  max-width: 160px;
+  color: var(--color-light-300);
+}
+
+.field label {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+}
+
+.field input[type=text] {
+  width: 100%;
+  font-size: 32px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid var(--color-light-200);
+  padding: 12px 24px;
+  margin-top: 8px;
+  color: var(--color-dark);
+}
+
+.field input[type=text]::placeholder {
+  opacity: .8;
+  color: var(--color-light-300);
+}
+
+
+
+.age-form button[type=submit] {
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  transition: 40ms;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateY(50%);
+}
+
+.age-form button[type=submit]:hover,
+.age-form button[type=submit]:active {
+  background-color: var(--color-dark);
+  border: var(--color-dark);
+  transition: 160ms;
+}
+
+.age-form button[type=submit]:active {
+  transform: scale(98%);
+}
