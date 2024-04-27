@@ -39,14 +39,21 @@
   color: var(--color-light-300);
 }
 
+.field input[type=text]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
 
 
 .age-form button[type=submit] {
+  /* Custom prop for setting background and border color */
+  --button-color: var(--color-primary);
+
   width: 96px;
   height: 96px;
   border-radius: 9999px;
-  border: 1px solid var(--color-primary);
-  background-color: var(--color-primary);
+  border: 1px solid var(--button-color);
+  background-color: var(--button-color);
   transition: 40ms;
   position: absolute;
   bottom: 0;
@@ -56,11 +63,15 @@
 
 .age-form button[type=submit]:hover,
 .age-form button[type=submit]:active {
-  background-color: var(--color-dark);
-  border: var(--color-dark);
+  --button-color: var(--color-dark);
   transition: 160ms;
 }
 
 .age-form button[type=submit]:active {
-  transform: scale(98%);
+  transform: translateY(50%) scale(95%);
+}
+
+.age-form button[type=submit]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-light-100), 0 0 0 8px var(--color-primary);
 }
