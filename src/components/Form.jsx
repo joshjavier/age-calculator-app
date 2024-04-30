@@ -1,9 +1,10 @@
 import { useForm } from 'react-hook-form'
+import PropTypes from 'prop-types'
 import IconArrow from '../assets/icon-arrow.svg?react'
 import './Form.css'
 import { calculateAge } from '../lib/functions'
 
-const Form = () => {
+const Form = ({ setAge }) => {
   const {
     register,
     handleSubmit,
@@ -11,6 +12,7 @@ const Form = () => {
     trigger,
     formState: { isSubmitted, errors },
   } = useForm()
+  const resetAge = () => setAge({ years: null, months: null, days: null })
 
   const onSubmit = (data) => {
     // Check if date is valid
@@ -27,6 +29,7 @@ const Form = () => {
      */
     if (inputDate !== parsedDate) {
       setError('day', { type: 'custom', message: 'Must be a valid date' })
+      resetAge()
       return
     }
     /**
@@ -36,11 +39,12 @@ const Form = () => {
       setError('day', { type: 'custom', message: 'Must be in the past' })
       setError('month', { type: 'custom', message: '' })
       setError('year', { type: 'custom', message: '' })
+      resetAge()
       return
     }
 
     const age = calculateAge(data)
-    console.log(age)
+    setAge(age)
   }
 
   return (
@@ -122,6 +126,10 @@ const Form = () => {
       </button>
     </form>
   )
+}
+
+Form.propTypes = {
+  setAge: PropTypes.func,
 }
 
 export default Form

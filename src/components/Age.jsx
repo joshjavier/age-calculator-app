@@ -1,22 +1,22 @@
 import PropTypes from 'prop-types'
 import './Age.css'
 
-const Age = ({ years = '- -', months = '- -', days = '- -' }) => {
+const Age = ({ years, months, days }) => {
   return (
     <p className="age-result">
-      <span>{years}</span> years
+      <span>{years !== null ? years : '- -'}</span> years
       <br />
-      <span>{months}</span> months
+      <span>{months !== null ? months : '- -'}</span> months
       <br />
-      <span>{days}</span> days
+      <span>{days !== null ? days : '- -'}</span> days
     </p>
   )
 }
 
 Age.propTypes = {
-  years: PropTypes.oneOf(['- -', PropTypes.number]),
-  months: PropTypes.oneOf(['- -', PropTypes.number]),
-  days: PropTypes.oneOf(['- -', PropTypes.number]),
+  years: PropTypes.number,
+  months: PropTypes.number,
+  days: PropTypes.number,
 }
 
 export default Age
