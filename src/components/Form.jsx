@@ -1,73 +1,119 @@
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import IconArrow from '../assets/icon-arrow.svg?react'
 import './Form.css'
-
-const EMPTY = {
-  day: '',
-  month: '',
-  year: '',
-}
+import { calculateAge } from '../lib/functions'
 
 const Form = () => {
-  const [data, setData] = useState(EMPTY)
+  const {
+    register,
+    handleSubmit,
+    setError,
+    trigger,
+    formState: { isSubmitted, errors },
+  } = useForm()
 
-  const onChange = (evt) => {
-    setData(data => ({
-      ...data,
-      [evt.target.name]: evt.target.value,
-    }))
-  }
+  const onSubmit = (data) => {
+    // Check if date is valid
+    const inputDate = `${data.year}-${data.month.padStart(2, '0')}-${data.day.padStart(2, '0')}`
+    const date = new Date(data.year, data.month - 1, data.day)
+    const parsedDate = `${date.getFullYear()}`
+      + `-${`${date.getMonth() + 1}`.padStart(2, '0')}`
+      + `-${`${date.getDate()}`.padStart(2, '0')}`
 
-  const onSubmit = (evt) => {
-    evt.preventDefault()
+    /**
+     * Some invalid dates are accepted by the Date() constructor. For example,
+     * February 31, 2024 is parsed as March 2, 2024. To guard against such case,
+     * we compare the input date and the parsed date.
+     */
+    if (inputDate !== parsedDate) {
+      setError('day', { type: 'custom', message: 'Must be a valid date' })
+      return
+    }
+    /**
+     * Validation that checks if the date is in the future.
+     */
+    if (new Date(parsedDate) > new Date()) {
+      setError('day', { type: 'custom', message: 'Must be in the past' })
+      setError('month', { type: 'custom', message: '' })
+      setError('year', { type: 'custom', message: '' })
+      return
+    }
+
+    const age = calculateAge(data)
+    console.log(age)
   }
 
   return (
-    <form className="age-form" onSubmit={onSubmit}>
+    <form className="age-form" onSubmit={handleSubmit(onSubmit)} noValidate>
       <fieldset>
-        <div className="field">
+        <div className={`field${errors.day ? ' has-error' : ''}`}>
           <label htmlFor="day">Day</label>
           <input
-            type="text"
-            inputMode="numeric"
-            name="day"
             id="day"
+            type="number"
             placeholder="DD"
+            aria-describedby="day-error"
             size={4}
-            maxLength={2}
-            value={data.day}
-            onChange={onChange}
+            min={1}
+            max={31}
+            {...register('day', {
+              required: 'This field is required',
+              validate: day => (parseInt(day) >= 1 && parseInt(day) <= 31) || 'Must be a valid day',
+              onBlur: ({ target }) => {
+                if (target.value === '') return
+                target.value = target.value.padStart(2, '0')
+              },
+              onChange: () => {
+                // Trigger validation on all fields if form has been submitted before
+                if (isSubmitted) trigger()
+              },
+            })}
           />
+          <div className="error" id="day-error">{errors.day?.message}</div>
         </div>
 
-        <div className="field">
+        <div className={`field${errors.month ? ' has-error' : ''}`}>
           <label htmlFor="month">Month</label>
           <input
-            type="text"
-            inputMode="numeric"
-            name="month"
             id="month"
+            type="number"
             placeholder="MM"
+            aria-describedby="month-error"
             size={4}
-            maxLength={2}
-            value={data.month}
-            onChange={onChange}
+            min={1}
+            max={12}
+            {...register('month', {
+              required: 'This field is required',
+              validate: month => (parseInt(month) >= 1 && parseInt(month) <= 12) || 'Must be a valid month',
+              onBlur: ({ target }) => {
+                if (target.value === '') return
+                target.value = target.value.padStart(2, '0')
+              },
+              onChange: () => {
+                if (isSubmitted) trigger()
+              },
+            })}
           />
+          <div className="error" id="month-error">{errors.month?.message}</div>
         </div>
 
-        <div className="field">
+        <div className={`field${errors.year ? ' has-error' : ''}`}>
           <label htmlFor="year">Year</label>
           <input
-            type="text"
-            inputMode="numeric"
-            name="year"
             id="year"
+            type="number"
             placeholder="YYYY"
+            aria-describedby="year-error"
             size={4}
-            maxLength={4}
-            value={data.year}
-            onChange={onChange}
+            {...register('year', {
+              required: 'This field is required',
+              validate: year => (parseInt(year) <= new Date().getFullYear()) || 'Must be in the past',
+              onChange: () => {
+                if (isSubmitted) trigger()
+              },
+            })}
           />
+          <div className="error" id="year-error">{errors.year?.message}</div>
         </div>
       </fieldset>
 

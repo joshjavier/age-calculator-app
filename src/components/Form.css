@@ -23,7 +23,18 @@
   letter-spacing: 3.5px;
 }
 
-.field input[type=text] {
+/* Hide the spinbutton in Firefox */
+.field input[type=number] {
+  -moz-appearance: textfield;
+}
+/* and in Chrome browsers */
+.field input::-webkit-inner-spin-button,
+.field input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.field input {
   width: 100%;
   font-size: 32px;
   font-weight: 700;
@@ -34,14 +45,21 @@
   color: var(--color-dark);
 }
 
-.field input[type=text]::placeholder {
+.field input::placeholder {
   opacity: .8;
   color: var(--color-light-300);
 }
 
-.field input[type=text]:focus {
+.field input:focus {
   border-color: var(--color-primary);
   outline: none;
+}
+
+.field .error {
+  margin-top: 8px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--color-warning);
 }
 
 
@@ -74,4 +92,14 @@
 .age-form button[type=submit]:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px var(--color-light-100), 0 0 0 8px var(--color-primary);
+}
+
+
+/* If there's an error, use red for labels and borders */
+.field.has-error label {
+  color: var(--color-warning);
+}
+
+.field.has-error input {
+  border-color: var(--color-warning);
 }
