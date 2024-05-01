@@ -56,6 +56,7 @@ const Form = ({ setAge }) => {
             id="day"
             type="number"
             placeholder="DD"
+            autoComplete="off"
             aria-describedby="day-error"
             size={4}
             min={1}
@@ -82,6 +83,7 @@ const Form = ({ setAge }) => {
             id="month"
             type="number"
             placeholder="MM"
+            autoComplete="off"
             aria-describedby="month-error"
             size={4}
             min={1}
@@ -107,6 +109,7 @@ const Form = ({ setAge }) => {
             id="year"
             type="number"
             placeholder="YYYY"
+            autoComplete="off"
             aria-describedby="year-error"
             size={4}
             {...register('year', {
