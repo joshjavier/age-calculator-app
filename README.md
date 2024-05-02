@@ -31,7 +31,7 @@ Users should be able to:
   - [x] The date is invalid e.g. 31/04/1991 (there are 30 days in April)
 - [x] View the optimal layout for the interface depending on their device's screen size
 - [x] See hover and focus states for all interactive elements on the page
-- [ ] **Bonus**: See the age numbers animate to their final number when the form is submitted
+- [x] **Bonus**: See the age numbers animate to their final number when the form is submitted
 
 ### Screenshot
 
