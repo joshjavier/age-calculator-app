@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types'
+import Number from './Number'
 import './Age.css'
 
 const Age = ({ years, months, days }) => {
   return (
     <p className="age-result">
-      <span>{years !== null ? years : '- -'}</span> years
+      <Number n={years} /> years
       <br />
-      <span>{months !== null ? months : '- -'}</span> months
+      <Number n={months} /> months
       <br />
-      <span>{days !== null ? days : '- -'}</span> days
+      <Number n={days} /> days
     </p>
   )
 }
