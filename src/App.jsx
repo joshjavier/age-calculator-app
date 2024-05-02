@@ -11,10 +11,13 @@ function App() {
   })
 
   return (
-    <div className="container">
-      <Form setAge={setAge} />
-      <Age {...age} />
-    </div>
+    <>
+      <h1 className="visually-hidden">Age Calculator</h1>
+      <article className="container">
+        <Form setAge={setAge} />
+        <Age {...age} />
+      </article>
+    </>
   )
 }
 

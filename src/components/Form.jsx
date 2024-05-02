@@ -50,6 +50,7 @@ const Form = ({ setAge }) => {
   return (
     <form className="age-form" onSubmit={handleSubmit(onSubmit)} noValidate>
       <fieldset>
+        <legend className="visually-hidden">Enter your birthdate</legend>
         <div className={`field${errors.day ? ' has-error' : ''}`}>
           <label htmlFor="day">Day</label>
           <input
