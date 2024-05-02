@@ -1,24 +1,36 @@
 .age-form {
   position: relative;
+  padding-bottom: utopia.clamp(63, 47);
+  border-bottom: 2px solid var(--color-light-200);
 }
 
 .age-form fieldset {
-  display: flex;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 544px;
+  gap: utopia.clamp(16, 32);
   padding: 0;
-  padding-bottom: 47px;
   border: 0;
-  border-bottom: 2px solid var(--color-light-200);
+}
+
+@media (max-width: 374px) {
+  .age-form fieldset {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .age-form fieldset :last-child {
+    grid-column: span 2;
+  }
 }
 
 .age-form .field {
   max-width: 160px;
   color: var(--color-light-300);
+  font-size: utopia.clamp(12, 14);
 }
 
 .field label {
   text-transform: uppercase;
-  font-size: 14px;
   font-weight: 700;
   letter-spacing: 3.5px;
 }
@@ -36,11 +48,11 @@
 
 .field input {
   width: 100%;
-  font-size: 32px;
+  font-size: utopia.clamp(20, 32);
   font-weight: 700;
   border-radius: 8px;
   border: 1px solid var(--color-light-200);
-  padding: 12px 24px;
+  padding: 12px utopia.clamp(16, 24);
   margin-top: 8px;
   color: var(--color-dark);
 }
@@ -57,9 +69,12 @@
 
 .field .error {
   margin-top: 8px;
-  font-size: 14px;
   font-style: italic;
   color: var(--color-warning);
+}
+
+.field .error:empty {
+  display: none;
 }
 
 
@@ -67,8 +82,8 @@
   /* Custom prop for setting background and border color */
   --button-color: var(--color-primary);
 
-  width: 96px;
-  height: 96px;
+  width: utopia.clamp(64, 96);
+  height: utopia.clamp(64, 96);
   border-radius: 9999px;
   border: 1px solid var(--button-color);
   background-color: var(--button-color);
@@ -92,6 +107,21 @@
 .age-form button[type=submit]:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px var(--color-light-100), 0 0 0 8px var(--color-primary);
+}
+
+.age-form button svg {
+  width: utopia.clamp(28, 46);
+}
+
+@media (max-width: 480px) {
+  .age-form button[type=submit] {
+    right: 50%;
+    transform: translate(50%, 50%);
+  }
+
+  .age-form button[type=submit]:active {
+    transform: translate(50%, 50%) scale(95%);
+  }
 }
 
 

@@ -47,6 +47,16 @@
   --color-light-200: #F0F0F0; /* page background and border */
   --color-light-300: #716F6F; /* form label and placeholder */
   --color-dark: #151515;
+
+  /* Fluid values */
+  @utopia clamps({
+    minWidth: 375,
+    maxWidth: 872,
+    pairs: [
+      [56, 104]
+    ],
+    prefix: "fluid",
+  });
 }
 
 * {
