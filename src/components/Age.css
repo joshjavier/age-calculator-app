@@ -1,0 +1,18 @@
+.age-result {
+  font-weight: 800;
+  font-style: italic;
+  font-size: var(--fluid-56-104);
+  letter-spacing: -2px;
+  line-height: 1.15;
+  margin-block: utopia.clamp(52, 26) 0;
+}
+
+@media (max-width: 375px) {
+  .age-result {
+    font-size: utopia.clamp(46, 56, 320, 375);
+  }
+}
+
+.age-result span {
+  color: var(--color-primary);
+}
