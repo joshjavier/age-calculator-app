@@ -11,10 +11,8 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -39,7 +37,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: https://www.frontendmentor.io/solutions/age-calculator-app-built-with-react-react-hook-form-and-react-spring-lRC3ufvh4t
 - Live Site URL: https://age-calculator-zmvt.netlify.app/
 
 ## My process
@@ -53,6 +51,7 @@ Users should be able to:
 - [Vite](https://vitejs.dev/) - dev server and bundler
 - [PostCSS Utopia](https://www.npmjs.com/package/postcss-utopia) - for generating fluid type and spacing via `clamp()`
 - [React Hook Form](https://www.react-hook-form.com/) - React form validation library
+- [React Spring](https://www.react-spring.dev/) - React animation library
 
 ### What I learned
 
@@ -86,6 +85,8 @@ if (inputDate !== parsedDate) {
 ### Useful resources
 
 - [NIST Guide to the SI, Appendix B.9: Factors for time units](https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9#TIME) - to get results that are as precise as possible
+- [This StackOverflow answer](https://stackoverflow.com/a/77939804) inspired my implementation of the logic for calculating age.
+- [Why you should be doing schema validation in React projects](https://engineering.udacity.com/why-you-should-be-doing-schema-validation-in-react-projects-ce3c4b1df02f) - One of the many articles that led me to discover React Hook Form.
 
 ## Author
 
