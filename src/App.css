@@ -6,11 +6,15 @@
 }
 
 .container {
+  width: 100%;
+  max-width: 840px;
+}
+
+age-calculator {
+  display: block;
   background-color: var(--color-light-100);
   border-radius: 24px;
   border-bottom-right-radius: utopia.clamp(100, 200);
   padding: utopia.clamp(48, 56) utopia.clamp(24, 56);
   padding-bottom: 35px;
-  width: 100%;
-  max-width: 840px;
 }

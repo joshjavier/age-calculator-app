@@ -61,7 +61,6 @@ const Form = ({ setAge }) => {
             placeholder="DD"
             autoComplete="off"
             aria-describedby="day-error"
-            size={4}
             min={1}
             max={31}
             {...register('day', {
@@ -88,7 +87,6 @@ const Form = ({ setAge }) => {
             placeholder="MM"
             autoComplete="off"
             aria-describedby="month-error"
-            size={4}
             min={1}
             max={12}
             {...register('month', {
@@ -114,7 +112,6 @@ const Form = ({ setAge }) => {
             placeholder="YYYY"
             autoComplete="off"
             aria-describedby="year-error"
-            size={4}
             {...register('year', {
               required: 'This field is required',
               validate: year => (parseInt(year) <= new Date().getFullYear()) || 'Must be in the past',
