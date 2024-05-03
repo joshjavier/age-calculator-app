@@ -4,12 +4,13 @@ import { animated, useSpring } from '@react-spring/web'
 const Number = ({ n }) => {
   const { number } = useSpring({
     from: { number: 0 },
-    number: n,
+    to: { number: n },
+    reset: true,
     config: { mass: 1, tension: 20, friction: 10 },
   })
 
   return (
-    <animated.span>{number !== null ? number.to(number => number.toFixed(0)) : '- -'}</animated.span>
+    <animated.span>{n !== null ? number.to(number => number.toFixed(0)) : '- -'}</animated.span>
   )
 }
 
