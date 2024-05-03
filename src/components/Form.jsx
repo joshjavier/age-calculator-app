@@ -29,6 +29,8 @@ const Form = ({ setAge }) => {
      */
     if (inputDate !== parsedDate) {
       setError('day', { type: 'custom', message: 'Must be a valid date' })
+      setError('month', { type: 'custom', message: '' })
+      setError('year', { type: 'custom', message: '' })
       resetAge()
       return
     }
